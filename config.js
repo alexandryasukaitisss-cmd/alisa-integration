@@ -3,7 +3,7 @@ export const CONFIG = {
   CLIENT_ID: "f94b1f9f42104845ba853ff985f21e14",
 
   // ВАЖНО: должен совпадать с Redirect URI в настройках приложения
-  REDIRECT_URI: window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/callback.html"),
+  REDIRECT_URI: "https://alexandryasukaitisss-cmd.github.io/alisa-integration/callback.html",
   
   // Нужные права для Smart Home API
   SCOPES: ["iot:view", "iot:control"],
