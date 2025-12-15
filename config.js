@@ -3,8 +3,8 @@ export const CONFIG = {
   CLIENT_ID: "8d9bb75db29f494a9ebb7b1161145d28",
 
   // ВАЖНО: должен совпадать с Redirect URI в настройках приложения
-  REDIRECT_URI: https://oauth.yandex.ru/verification_code,
-
+  REDIRECT_URI: window.location.origin + window.location.pathname.replace(/\/[^/]*$/, "/callback.html"),
+  
   // Нужные права для Smart Home API
   SCOPES: ["iot:view", "iot:control"],
 
