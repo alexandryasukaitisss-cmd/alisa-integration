@@ -12,7 +12,7 @@ export const CONFIG = {
   TOKEN_STORAGE: "local",
 
   // Автообновление показаний (мс)
-  REFRESH_INTERVAL_MS: 15000,
+  REFRESH_INTERVAL_MS: 30000,
 
   // Если упрётесь в CORS, сюда можно поставить прокси (см. раздел 5)
   // Пример: "https://your-worker.yourname.workers.dev"
