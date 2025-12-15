@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+
+  <title>Дом — Датчики и кнопки</title>
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- iOS PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Дом</div>
+      <div class="subtitle" id="statusLine">не авторизовано</div>
+    </div>
+
+    <div class="actions">
+      <button id="btnLogin" class="btn primary">Войти</button>
+      <button id="btnLogout" class="btn">Выйти</button>
+      <button id="btnRefresh" class="btn">Обновить</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panelHead">
+        <h2>Датчики (температура / влажность)</h2>
+        <div class="hint">Без лишних кликов: автообновление + избранное (★)</div>
+      </div>
+      <div id="sensorsGrid" class="grid"></div>
+      <div id="sensorsEmpty" class="empty">Нет датчиков с температурой/влажностью в Яндекс.Дом.</div>
+    </section>
+
+    <section class="panel">
+      <div class="panelHead">
+        <h2>Управление (ON/OFF)</h2>
+        <div class="hint">Показываются устройства, поддерживающие on_off</div>
+      </div>
+      <div id="controlsGrid" class="grid"></div>
+      <div id="controlsEmpty" class="empty">Нет устройств с управлением ON/OFF.</div>
+    </section>
+
+    <section class="panel">
+      <div class="panelHead">
+        <h2>Сценарии</h2>
+        <div class="hint">Запуск сценариев из Яндекс.Дом</div>
+      </div>
+      <div id="scenariosGrid" class="grid"></div>
+      <div id="scenariosEmpty" class="empty">Сценарии не найдены.</div>
+    </section>
+
+    <section class="panel warn" id="errorBox" style="display:none;">
+      <h2>Проблема</h2>
+      <pre id="errorText"></pre>
+      <div class="hint">
+        Если ошибка похожа на CORS/blocked by client, включите прокси (см. раздел 5).
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
