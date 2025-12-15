@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Callback</title>
+</head>
+<body>
+  <script type="module">
+    import { CONFIG } from "./config.js";
+
+    function parseHash(hash) {
+      const out = {};
+      const h = (hash || "").replace(/^#/, "");
+      for (const part of h.split("&")) {
+        if (!part) continue;
+        const [k, v] = part.split("=");
+        out[decodeURIComponent(k)] = decodeURIComponent(v || "");
+      }
+      return out;
+    }
+
+    const params = parseHash(window.location.hash);
+    const token = params.access_token;
+    const expiresIn = Number(params.expires_in || "0");
+
+    const storage = CONFIG.TOKEN_STORAGE === "local" ? localStorage : sessionStorage;
+
+    if (token) {
+      const expAt = Date.now() + Math.max(0, expiresIn - 30) * 1000; // небольшой запас
+      storage.setItem("ya_home_token", token);
+      storage.setItem("ya_home_token_expires_at", String(expAt));
+      window.location.replace("./");
+    } else {
+      document.body.textContent = "Не удалось получить токен. Проверьте настройки OAuth и Redirect URI.";
+    }
+  </script>
+</body>
+</html>
