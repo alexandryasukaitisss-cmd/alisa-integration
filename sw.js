@@ -1,4 +1,4 @@
-const CACHE = "ya-home-pwa-v2";
+const CACHE = "ya-home-pwa-v3";
 const ASSETS = [
   "./",
   "./index.html",
