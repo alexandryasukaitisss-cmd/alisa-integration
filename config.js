@@ -16,5 +16,5 @@ export const CONFIG = {
 
   // Если упрётесь в CORS, сюда можно поставить прокси (см. раздел 5)
   // Пример: "https://your-worker.yourname.workers.dev"
-  PROXY_ORIGIN: ""
+  PROXY_ORIGIN: "https://ya-iot-proxy.alexandryasukaitisss.workers.dev/"
 };
