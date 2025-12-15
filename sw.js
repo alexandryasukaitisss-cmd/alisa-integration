@@ -5,9 +5,10 @@ const ASSETS = [
   "./callback.html",
   "./styles.css",
   "./app.js",
-  "./config.js",
+  // "./config.js",  <-- УБРАТЬ
   "./manifest.webmanifest"
 ];
+
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
